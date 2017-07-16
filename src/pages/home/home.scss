@@ -1,3 +1,96 @@
-page-home {
+.circle-off
+{
+  height: 50px;
+  width: 50px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #666;
+  font-size: 1.8rem;
+}
+.circle-on
+{
+  height: 50px;
+  width: 50px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: color($colors, cgreen);
+  font-size: 1.8rem;
+}
 
+.deviceWidget-color1 {
+  //  background: #364c85;
+}
+.deviceWidget-color2 {
+  //  background: #5aa3e0;
+}
+
+
+
+ion-list > .item:first-child, ion-list > ion-item-sliding:first-child .item {
+    border-top: 0px solid #dedede;
+}
+ion-list > .item:last-child, ion-list > ion-item-sliding:last-child .item {
+    border-bottom: 0px solid #dedede;
+}
+
+ion-card ion-list .item-inner {
+    border-bottom: 1px solid #736B6B;
+}
+
+.component-header {
+  padding: 10px 16px 0px 10px;
+  //border-bottom: 0px solid #dedede;
+  font-size: 1.4rem;
+  color: #858585;
+}
+
+.box-none{
+  box-shadow: none !important;
+  background:none;
+}
+.box-none ion-card-header{
+  color: #858585;
+  font-size: 1.4rem;
+}
+.banner {
+  background: #5983d4;
+  //background: linear-gradient(to right, #47b2f6 0%, #6958b5 100%);
+  //background: linear-gradient(to right, #79C0EC 0%, #6958b5 100%);
+  //  background: linear-gradient(to right, #008CC6 0%, #009EA4 100%);
+  //background: linear-gradient(to right, #6958b5 0%, #57B2EA  100%);
+  //  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)
+  background: linear-gradient(45deg, #6958b5 0%, #57B2EA 100%);
+  //background: radial-gradient(circle, #6958b5, #57B2EA, #57B2EA);
+
+  //background-color: #434954;
+  padding: 16px;
+  width: 100%;
+  min-height: 150px;
+  text-align: center;
+}
+
+.about-header {
+  background-color: #434954;
+  padding: 16px;
+  width: 100%;
+  min-height: 150px;
+  text-align: center;
+}
+
+.home{
+  ion-avatar img {
+      min-width: 5rem;
+      min-height: 5rem;
+      max-width: 5rem;
+      max-height: 5rem;
+      border-radius: 3rem;
+  }
+
+  ion-item:nth-child(n) {
+    //border-bottom: 1px solid #676565 ;// $list-md-border-color;
+  }
 }

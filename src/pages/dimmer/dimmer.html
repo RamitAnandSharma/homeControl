@@ -1,0 +1,12 @@
+
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Device Control</ion-title>
+</ion-navbar>
+<ion-content>
+  <ion-card style="text-align: center;" >
+    <Circular-Knob  [myHighlight]="'red'" [min]="40" [max]="80"></Circular-Knob>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+      <ion-title>Right Now</ion-title>
+  </ion-navbar>
+
+  <!-- <ion-toolbar>
+    <ion-title>
+      Toolbar Title
+    </ion-title>
+  </ion-toolbar> -->
+</ion-header>
+
+
+<ion-content class="rightnow">
+
+  <div class="about-header banner">
+    <elementsvg  [value] ="23" [text] = "'°C'"></elementsvg>
+  </div>
+
+
+  <!-- <ion-card class="box-none">
+    <ion-card-header no-padding >
+      Devices
+    </ion-card-header>
+  </ion-card> -->
+
+  <ion-card >
+    <ion-item-divider no-border no-lines  >Devices</ion-item-divider>
+    <ion-list >
+      <ion-item *ngFor="let each of devices" style="border-bottom: 1px solid #676565 ;">
+        <ion-icon [name]="each.icon" item-left color="cgreen"></ion-icon>
+        {{each.device}}
+        <ion-badge item-right color="cgreen">{{each.state}}</ion-badge>
+        <button ion-button clear item-right color="white"><ion-icon name="ios-arrow-forward-outline"></ion-icon></button>
+        <!-- <ion-note item-right>
+          <ion-icon name="ios-arrow-forward-outline" item-right></ion-icon>
+        </ion-note> -->
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+ <ion-card class="other">
+   <ion-item-divider no-border no-lines  >Others</ion-item-divider>
+   <ion-list >
+     <ion-item >
+       <ion-icon name='sunny' item-left color="cgreen"></ion-icon>
+       Outdoor
+       <ion-note item-right>
+         Partly sunny. 28 / 34 °C
+       </ion-note>
+     </ion-item>
+
+     <ion-item>
+       <ion-icon name='thermometer' item-left color="cgreen"></ion-icon>
+       Temperature
+       <ion-note item-right *ngIf="TEMP">
+       {{TEMP}}* C
+       </ion-note>
+     </ion-item>
+     <ion-item>
+       <ion-icon name='ios-flame' item-left color="cgreen"></ion-icon>
+       Fire Alarm
+       <ion-note item-right>
+       OK
+       </ion-note>
+     </ion-item>
+
+     <ion-item>
+       <ion-icon name='water' item-left  color="cgreen"></ion-icon>
+       Humidity
+       <ion-note item-right *ngIf="HUMIDITY">
+       {{HUMIDITY}}%
+       </ion-note>
+     </ion-item>
+
+     <ion-item >
+        <ion-icon name='ios-analytics' item-left color="danger"></ion-icon>
+        Dust Level
+        <ion-badge item-right color="danger">High</ion-badge>
+     </ion-item>
+     <ion-item no-padding>
+       <ion-icon item-left no-padding></ion-icon>
+          <!-- <ion-icon name='ios-bug-outline' item-left primary></ion-icon> -->
+          <!-- <ion-badge item-right c-light-pink style="margin: 0px;margin-bottom: 0px;"> -->
+          <ion-badge item-right color="danger" >
+            <p class="item-text-wrap" style="color:#fff;">
+               Some Message to be shown to the user for any alert
+             </p>
+           </ion-badge>
+     </ion-item>
+
+     <ion-item>
+       <ion-icon name='flame' item-left color="cgreen"></ion-icon>
+       Air Quality
+       <ion-note item-right *ngIf="AQ">
+       {{AQ}} PSI
+       </ion-note>
+     </ion-item>
+    </ion-list>
+</ion-card>
+
+</ion-content>

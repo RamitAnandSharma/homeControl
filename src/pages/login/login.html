@@ -1,0 +1,23 @@
+<ion-content class="loginbag">
+  <div padding>
+    <button ion-button block clear class="fa-stack fa-5x" color="white">
+      <ion-icon name="ios-barcode-outline"></ion-icon>
+    </button>
+    <ion-label color="white"><h2>Smart Home</h2></ion-label>
+  </div>
+  <form #loginForm="ngForm" novalidate >
+  <ion-list>
+    <ion-item >
+      <ion-label floating color="white">Username</ion-label>
+      <ion-input [(ngModel)]="login.username" type="text" name="username" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating color="white">Password</ion-label>
+      <ion-input [(ngModel)]="login.password" type="password" name="password" required></ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button block type="submit" (click)="onLogin(loginForm)">Login</button>
+  </div>
+  </form>
+</ion-content>

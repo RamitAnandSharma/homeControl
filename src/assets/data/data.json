@@ -1,0 +1,253 @@
+{
+  "user": [
+    {
+      "username": "user",
+      "password": "password"
+    },
+    {
+      "username": "anurag",
+      "password": "password"
+    }
+  ],
+  "rooms": [
+    {
+      "roomid": "1",
+      "name": "Living Room",
+      "icon": "assets/img/room/icon_living_room_checked.png"
+    },
+    {
+      "roomid": "2",
+      "name": "Master Bedroom",
+      "icon": "assets/img/room/icon_the_master_bedroom_checked.png"
+    },
+    {
+      "roomid": "3",
+      "name": "Bedroom",
+      "icon": "assets/img/room/icon_bedroom_checked.png"
+    },
+    {
+      "roomid": "4",
+      "name": "Guest Room",
+      "icon": "assets/img/room/icon_bedroom_checked.png"
+    },
+    {
+      "roomid": "5",
+      "name": "Kitchen",
+      "icon": "assets/img/room/icon_kitchen_checked.png"
+    }
+  ],
+  "devices":[
+      {
+        "name": "Overhead Light",
+        "alias":"light",
+        "icon":"assets/img/device/icon_light_up.png",
+        "state": "off",
+        "dimmable": false,
+        "online":true,
+        "processing": false
+      },
+      {
+        "name": "Air Condition",
+        "alias":"ac",
+        "icon":"assets/img/device/icon_aircondition.png",
+        "state": "off",
+        "dimmable": false,
+        "online":true,
+        "processing": false
+      },
+      {
+        "name": "Fan",
+        "alias":"fan",
+        "icon":"assets/img/device/icon_fan.png",
+        "state": "off",
+        "dimmable": false,
+        "online":true,
+        "processing": false
+      },
+      {
+        "name": "Plug",
+        "alias":"plug",
+        "icon":"assets/img/device/icon_scene_socket_g.png",
+        "state": "off",
+        "dimmable": false,
+        "online":true,
+        "processing": false
+      }
+  ],
+  "roomsbackup": [
+    {
+      "roomid": "1",
+      "name": "Garage",
+      "icon": "assets/img/room/icon_garage_checked.png"
+    },
+    {
+      "roomid": "2",
+      "name": "Kitchen",
+      "icon": "assets/img/room/icon_kitchen_checked.png"
+    },
+    {
+      "roomid": "3",
+      "name": "Dining Room",
+      "icon": "assets/img/room/icon_restaurant_checked.png"
+    },
+    {
+      "roomid": "4",
+      "name": "Bed Room",
+      "icon": "assets/img/room/icon_bedroom_checked.png"
+    },
+    {
+      "roomid": "5",
+      "name": "Living Room",
+      "icon": "assets/img/room/icon_living_room_checked.png"
+    },
+    {
+      "roomid": "6",
+      "name": "Master Room",
+      "icon": "assets/img/room/icon_the_master_bedroom_checked.png"
+    },
+    {
+      "roomid": "7",
+      "name": "Study Room",
+      "icon": "assets/img/room/icon_reading_room_checked.png"
+    }
+
+  ],
+
+  "events": [
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "TV",
+      "action": "OFF",
+      "time": "8:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_tv.png",
+      "tracks": ["Off"]
+    },
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "Shelf Light",
+      "action": "OFF",
+      "time": "8:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_light.png",
+      "tracks": ["Off"]
+    },
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "TV",
+      "action": "ON",
+      "time": "6:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_tv.png",
+      "tracks": ["On"]
+    },
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "Tubelight",
+      "action": "ON",
+      "time": "6:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_light.png",
+      "tracks": ["On"]
+    },
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "TV",
+      "action": "ON",
+      "time": "6:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_tv.png",
+      "tracks": ["On"]
+    },
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "Tubelight",
+      "action": "ON",
+      "time": "6:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_light.png",
+      "tracks": ["On"]
+    }
+  ],
+
+  "allevents": [
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "TV",
+      "action": "OFF",
+      "time": "8:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_tv.png",
+      "tracks": ["Off"]
+    },
+    {
+      "roomid": "1",
+      "location": "Living Room",
+      "device": "Shelf Light",
+      "action": "OFF",
+      "time": "8:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_light.png",
+      "tracks": ["Off"]
+    },
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "TV",
+      "action": "ON",
+      "time": "6:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_tv.png",
+      "tracks": ["On"]
+    },
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "Tubelight",
+      "action": "ON",
+      "time": "6:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_light.png",
+      "tracks": ["On"]
+    },
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "TV",
+      "action": "ON",
+      "time": "6:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_tv.png",
+      "tracks": ["On"]
+    },
+    {
+      "roomid": "1",
+      "location": "Master Room",
+      "device": "Tubelight",
+      "action": "ON",
+      "time": "6:00 am",
+      "date": "11/05/2016",
+      "message": "No message",
+      "icon": "assets/img/device/icon_light.png",
+      "tracks": ["On"]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+<ion-header>
+<ion-navbar >
+  <ion-title>Add New Routine</ion-title>
+  <ion-buttons end>
+    <button [hidden]="!showDelete" (click)="deleteRoutine($event)">
+      <ion-icon name='ios-trash-outline'></ion-icon>
+    </button>
+    <!-- <button [hidden]="showDelete" (click)="editRoutineDelete($event)">
+      <ion-icon name='ios-create-outline'></ion-icon>
+    </button>
+    <button [hidden]="showDelete" (click)="saveRoutineDelete($event)">
+      <ion-icon name='ios-checkmark-outline'></ion-icon>
+    </button>-->
+    <button [hidden]="showDelete" (click)="cancelRoutineDelete($event)">
+      <ion-icon name='ios-backspace-outline'></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+</ion-header>
+<ion-content >
+
+  <ion-segment [(ngModel)]="segment" color="primary">
+    <ion-segment-button value="devices" segment-activated>
+      Devices
+    </ion-segment-button>
+    <ion-segment-button value="rules" >
+      Rules
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="segment">
+
+
+      <ion-card >
+      <ion-list *ngSwitchCase="'devices'" style="margin: 0px;" >
+        <ion-item-group no-padding>
+            <ion-item class="ion-header" no-padding no-lines>
+              <ion-label>Select Rooms</ion-label>
+               <ion-select #newSelect [(ngModel)]="roomModel"  (ngModelChange)="roomSelect(roomModel)" multiple>
+                 <ion-option *ngFor="let eachRoom of roomList"  [value]="eachRoom" >{{eachRoom.name}}</ion-option>
+               </ion-select>
+
+               <!-- <ion-option *ngFor="let room of roomList" value="{{room.id}}"  (change)="toggleMultiSelect($event)"   >{{room.name}}</ion-option> -->
+
+            </ion-item>
+        </ion-item-group>
+      </ion-list>
+
+</ion-card >
+  <ion-card >
+    <!-- <ion-card ng-show="selectedRoomList.length > 0"> -->
+
+        <ion-list no-border >
+          <ion-item *ngFor="let selected of selectedList">
+              <ion-avatar item-left >
+                <img src='{{selected.icon}}'>
+              </ion-avatar>
+            {{selected.name}}
+            <ion-badge item-right>{{selected.state}}</ion-badge>
+            <ion-note item-right (click)="goToRoomDetails(selected)">
+              <ion-icon name="ios-arrow-forward-outline" item-right></ion-icon>
+            </ion-note>
+          </ion-item>
+        </ion-list>
+</ion-card >
+<ion-card >
+      <!-- <ion-list *ngSwitchCase="'devices'" >
+        <ion-item *ngFor="let each of deviceList">
+          <ion-avatar item-left>
+            <img src="{{each.icon}}">
+          </ion-avatar>
+          {{each.name}}
+          <ion-buttons start item-right>
+            <div class="circle-on" (click)="presentLoadingDefault($event, each)" [hidden]="!each.active">ON</div>
+            <div class="circle-off" (click)="presentLoadingDefault($event, each)" [hidden]="each.active">OFF</div>
+          </ion-buttons>
+        </ion-item>
+      </ion-list> -->
+
+      <ion-list *ngSwitchCase="'rules'" style="margin: 0px;">
+        <ion-item-group no-padding>
+            <ion-item class="ion-header" no-padding no-lines>
+               test 2
+            </ion-item>
+        </ion-item-group>
+      </ion-list>
+    </ion-card>
+  </div>
+</ion-content>

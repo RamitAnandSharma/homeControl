@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar >
+    <ion-title>{{sessionparam.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <ion-segment [(ngModel)]="segment" color="primary">
+    <ion-segment-button value="devices" segment-activated>
+      Devices
+    </ion-segment-button>
+    <ion-segment-button value="recently" (click)="recentActivity()">
+      Recently
+    </ion-segment-button>
+  </ion-segment>
+ <div [ngSwitch]="segment">
+    <ion-list *ngSwitchCase="'devices'" no-lines>
+        <ion-card *ngFor="let each of deviceList ; let i = index" >
+          <ion-item >
+            <ion-avatar item-left>
+              <img src="{{each.icon}}">
+            </ion-avatar>
+            <p>{{each.name}}</p>
+          </ion-item>
+          <ion-item >
+            <ion-icon name='logo-rss'  [hidden]="!each.online" item-left ></ion-icon>
+            <ion-icon name='logo-rss' [hidden]="each.online" item-left danger ></ion-icon>
+            <ion-range [hidden]="!each.dimmable" [disabled]="!each.online"  min="0" max="20" step="2" [ngModel]="10" secondary>
+              <ion-icon range-left small name="sunny" secondary></ion-icon>
+              <ion-icon range-right name="sunny" secondary></ion-icon>
+            </ion-range>
+            <ion-buttons start item-right style="padding-right:0px">
+              <div class="circle-on" [hidden]="each.processing || !(each.state === 'on')" (click)="presentLoadingDefault($event, each)" >ON</div>
+              <div class="circle-on" [hidden]="!each.processing">...</div>
+              <div class="circle-off" [hidden]="each.processing || !(each.state === 'off')" (click)="presentLoadingDefault($event, each)" >OFF</div>
+            </ion-buttons>
+          </ion-item>
+        </ion-card>
+    </ion-list>
+    <ion-card no-padding *ngSwitchCase="'recently'" class="recently">
+      <ion-list *ngFor="let session of sessions">
+            <ion-item class="ion-header" no-lines>
+              <ion-avatar item-left>
+                <img src="{{session.icon}}">
+              </ion-avatar>
+              <ion-note item-right >
+                {{session.time}}
+              </ion-note>
+              <!-- <button clear item-right >
+                {{session.time}}
+              </button> -->
+            </ion-item>
+            <ion-item style="padding-right: 10px;" >
+              <ion-label style="margin-top:10px;">
+                <h3>{{session.device}} &mdash; {{session.action}}</h3>
+                <h4>
+                  {{session.location}} - {{session.date}}
+                </h4>
+              </ion-label>
+            </ion-item>
+      </ion-list>
+    </ion-card>
+</div>
+</ion-content>

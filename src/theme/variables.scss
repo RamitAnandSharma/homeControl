@@ -1,16 +1,6 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
-
-// Font path is used to include ionicons,
-// roboto, and noto sans fonts
 $font-path: "../assets/fonts";
-
-
-// The app direction is used to include
-// rtl styles in your app. For more info, please see:
-// http://ionicframework.com/docs/theming/rtl-support/
-$app-direction: ltr;
-
 
 @import "ionic.globals";
 
@@ -34,11 +24,28 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  cgreen:    #31C37C,
+  primary:    #387ef5,
+  white:      #FFFFFF,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  light:      #FFFFFF,
+  grey:       #f4f4f4,
+  dark:       #222,
+  favorite:   #69BB7B,
+  twitter:    #53ACEB,
+  github:     #000000,
+  instagram:  #235D8D,
+  royal:  #886aea,
+  c-yellow:  #FFFF00,
+  c-light-pink:  #FF4C4C,
+  c-shade-black:  #353232,
+  c-shade-white:  #FFFFFF,
+  stable:  #f8f8f8,
+  calm:  #11c1f3,
+  balanced:  #33cd5f,
+  energized:  #ffc900,
+  assertive:  #ef473a
 );
 
 
@@ -52,8 +59,8 @@ $colors: (
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
-
+ 
+  @import 'app.black';
 
 
 // App Windows Variables

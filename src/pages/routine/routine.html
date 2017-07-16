@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+    <ion-title>Routine</ion-title>
+  </ion-navbar>
+</ion-header> 
+  <ion-content >
+    <ion-card>
+      <ion-item>
+        <ion-icon name="ios-moon" item-left large color="cgreen"></ion-icon>
+        Night Mode
+        <button item-right ion-button round color="light" (click)="presentLoadingDefault($event)" [hidden]="!nightmodeActive">Enable</button>
+        <button item-right ion-button round (click)="presentLoadingDefault($event)" [hidden]="nightmodeActive">Disable</button>
+        <ion-note item-right padding-left (click)="showRoutineDetails($event)">
+          <ion-icon name="ios-arrow-forward-outline" item-right></ion-icon>
+        </ion-note>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-icon name="ios-home" item-left large color="cgreen"></ion-icon>
+          Home Mode
+          <button item-right ion-button round color="light" (click)="presentLoadingDefault($event)" [hidden]="!nightmodeActive">Enable</button>
+          <button item-right ion-button round (click)="presentLoadingDefault($event)" [hidden]="nightmodeActive">Disable</button>
+          <ion-note item-right padding-left (click)="showRoutineDetails($event)">
+            <ion-icon name="ios-arrow-forward-outline" item-right></ion-icon>
+          </ion-note>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-icon name="ios-key" item-left large color="cgreen"></ion-icon>
+          Out Mode
+          <button item-right ion-button round color="light" (click)="presentLoadingDefault($event)" [hidden]="!nightmodeActive">Enable</button>
+          <button item-right ion-button round (click)="presentLoadingDefault($event)" [hidden]="nightmodeActive">Disable</button>
+          <ion-note item-right padding-left (click)="showRoutineDetails($event)">
+            <ion-icon name="ios-arrow-forward-outline" item-right></ion-icon>
+          </ion-note>
+      </ion-item>
+    </ion-card>
+    <ion-fab top right edge>
+      <button ion-fab mini (click)="addNewRoutine($event)" color="light"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+  </ion-content>

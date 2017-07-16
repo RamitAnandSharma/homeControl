@@ -1,0 +1,10 @@
+.dial:after {
+   content: 'Completed';
+   display: block;
+   line-height: 1.45;
+   position: relative;
+   font-weight: normal;
+   top: -28px;
+   font-size: 11px;
+   color: rgba(255, 255, 255, 0.5);
+}

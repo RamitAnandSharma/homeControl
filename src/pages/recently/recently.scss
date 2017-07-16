@@ -1,0 +1,69 @@
+
+
+.recently { 
+  ion-item:nth-child(even) {
+    border-bottom: 1px solid #676565 ;// $list-md-border-color;
+  }
+
+}
+
+
+
+
+
+
+
+
+// $categories: (
+//  ionic: color($colors, primary),
+//  angular: #AC282B,
+//  communication: #8E8D93,
+//  tooling: #FE4C52,
+//  services: #FD8B2D,
+//  design: #FED035,
+//  workshop: #69BB7B,
+//  food: #3BC7C4,
+//  documentation: #B16BE3,
+//  navigation: #6600CC,
+//
+//  open: #FF0000,
+//  closed: #0055FF,
+//  on: #5DFF00,
+//  off: #0036FF,
+//  danger: #FF0000,
+//  active: #69BB7B,
+//
+// );
+//
+//
+// @function auxiliary-categories() {
+//   @return map-remove($categories);
+// }
+//
+// .recently {
+//   @each $track, $value in auxiliary-categories() {
+//    ion-item-sliding[track=#{$track}] ion-label {
+//      border-left: 2px solid $value;
+//      padding-left: 10px;
+//    }
+//   }
+//
+//   ion-list .ion-header .item-inner {
+//       border-bottom: 0px solid #dedede;
+//           padding: 0;
+//   }
+//
+//   ion-list .item-inner {
+//       padding: 0;
+//   }
+//
+//   .ion-label ion-label {
+//     margin: 0px 8px 13px 0;
+//   }
+// }
+//
+//
+// // Related to https://github.com/driftyco/ionic/issues/5055
+// .ios .hide-border .toolbar-background {
+//   border-bottom-color: transparent;
+// }
