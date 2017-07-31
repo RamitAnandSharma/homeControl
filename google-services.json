@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "512486982322",
+    "firebase_url": "https://smarthome-60bd4.firebaseio.com",
+    "project_id": "smarthome-60bd4",
+    "storage_bucket": "smarthome-60bd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512486982322:android:a4b2e5306a259e33",
+        "android_client_info": {
+          "package_name": "com.hybrid.homecontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512486982322-m2h6c0hum4qddris74st39fa4pgt96ho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWxhGuQ0yhaMbPIoCa14-e2IFYPAwORqw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,7 +3,7 @@
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Home 1</ion-title>
     <ion-buttons end>
      <button ion-button icon-only (click)="presentHomeActionSheet($event)">
        <ion-icon name="md-more"></ion-icon>
@@ -13,13 +13,17 @@
 </ion-header>
 <ion-content class="home">
   <ion-card>
-    <img src="assets/img/home.jpg" height="180px;">
-  </ion-card>
-  <ion-card *ngIf="base64Image">
-    <ion-item-divider no-border no-lines  style="border-bottom:0px;">Latest Picture:</ion-item-divider>
-    <img [src]="base64Image" *ngIf="base64Image" height="180px;"/>
-  </ion-card>
+    <img [src]="homeImage" *ngIf="homeImage" height="180px;">
 
+
+    <!-- <form ngNoForm>
+    <input id="file" name="file" type="file" >
+    <button (click)="uploadWeb()" type="button">Upload</button>
+    </form> -->
+
+
+
+  </ion-card>
   <ion-card>
     <ion-item-divider>Rooms</ion-item-divider>
     <ion-list >
@@ -30,5 +34,4 @@
       </ion-item>
     </ion-list>
   </ion-card>
-
 </ion-content>

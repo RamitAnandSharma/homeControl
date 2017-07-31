@@ -1,11 +1,12 @@
-import {enableProdMode} from '@angular/core';
-enableProdMode();
+
 import {Component, ViewChild} from '@angular/core';
+import { Push, PushToken } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Events, MenuController, Nav, Platform } from 'ionic-angular';
-import { Authentication, Persistence, MqttConfig } from '../providers/';
+
+import { Authentication, MqttConfig } from '../providers/';
 import { LoginPage, RecentlyPage, RoutinePage, HomePage, ProfilePage, RightnowPage, TabsPage } from '../pages/';
 
 export interface PageInterface {
@@ -16,6 +17,9 @@ export interface PageInterface {
   index?: number;
   tabComponent?: any;
 }
+
+
+
 
 @Component({
   templateUrl: 'app.html'
@@ -30,27 +34,25 @@ export class SmartHomeApp {
   @ViewChild(Nav) nav: Nav;
   constructor(private platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen, private events: Events,
     private menu: MenuController, private authentication: Authentication,
-    private persistence:Persistence, private storage: Storage, private mqttconfig: MqttConfig //, private pushconfig: PushConfig
+    private storage: Storage, private mqttconfig: MqttConfig, //, private pushconfig: PushConfig
+    public push: Push
      ) {
        // Check if the user has already seen the tutorial
-    this.storage.get('hasSeenTutorial')
-      .then((hasSeenTutorial) => {
-        if (hasSeenTutorial) {
-          //this.rootPage = TabsPage;
-        } else {
-          //this.rootPage = TutorialPage;
-        }
-        this.initializeApp();
-        this.configureMenu();
-        this.listenToLoginEvents();
-        this.checkPreviousAuthorization();
-
-        // decide which menu items should be hidden by current login status stored in local storage
-        // this.authentication.hasLoggedIn().then((hasLoggedIn) => {
-        //   this.enableMenu(hasLoggedIn === true);
-        // });
-      })
-
+    // this.storage.get('hasSeenTutorial')
+    //   .then((hasSeenTutorial) => {
+    //     if (hasSeenTutorial) {
+    //       //this.rootPage = TabsPage;
+    //     } else {
+    //       //this.rootPage = TutorialPage;
+    //     }
+    //
+    //
+    //     // decide which menu items should be hidden by current login status stored in local storage
+    //     // this.authentication.hasLoggedIn().then((hasLoggedIn) => {
+    //     //   this.enableMenu(hasLoggedIn === true);
+    //     // });
+    //   })
+      this.initializeApp();
   }
 
 
@@ -58,15 +60,21 @@ export class SmartHomeApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available. Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-
       this.splashScreen.hide();
+
+
       //this.pushconfig.enablePushNotification();
       this.listenToMQTTEvents();
       this.mqttconfig.enableMqtt();
-
+      // this.registerToken();
+      // this.getNotifications();
       //this.storage.ready().then(() => { });
 
+
+      this.checkPreviousAuthorization();
+      this.listenToLoginEvents();
     });
+    this.configureMenu();
   }
 
   private configureMenu(): void {
@@ -89,20 +97,18 @@ export class SmartHomeApp {
     // close the menu when clicking a link from the menu
     this.menu.close();
      // find the nav component and set what the root page should be reset the nav to remove previous pages and only have this page we wouldn't want the back button to show in this scenario
-     if (page.index) {
-       this.nav.setRoot(page.component, {tabIndex: page.index});
-     } else {
-       this.nav.setRoot(page.component);
-      //  this.nav.setRoot(page.component).catch(() => {
-      //    console.log("Didn't set nav root");
-      //   });
-     }
-     if (page.logsOut === true) {
+    if (page.index) { this.nav.setRoot(page.component, {tabIndex: page.index}); } else { this.nav.setRoot(page.component); }
+    if (page.logsOut === true) {
       // Give the menu time to close before changing to logged out
+      //this.registerPush();
       setTimeout(() => {
+        this.deregisterToken();
         this.authentication.logout();
-        this.checkPreviousAuthorization();
+        //this.checkPreviousAuthorization();
       }, 1000);
+    } else {
+      // this.registerToken();
+      // this.getNotifications();
     }
     //  if (page.title === 'Logout') {
     //    // Give the menu time to close before changing to logged out
@@ -118,16 +124,22 @@ export class SmartHomeApp {
   //     // });
   //
   //
- checkPreviousAuthorization():void {
+  checkPreviousAuthorization():void {
     this.authentication.getUser().then((value) => {
-       if( (typeof value === 'undefined') || (value === "undefined") || (value === null)) {
-          this.root = LoginPage;
-        } else {
-          this.authentication.setUsername(value);
-          this.root = TabsPage;
-        }
-     });
+      if( (typeof value === 'undefined') || (value === "undefined") || (value === null)) {
+        this.root = LoginPage;
+      } else {
+        //this.deregisterPush();
+        this.authentication.setUsername(value);
+        this.root = TabsPage;
+      }
+
+      this.registerToken();
+      this.getNotifications();
+
+    });
   }
+
   listenToMQTTEvents():void {
     this.events.subscribe('homeStatus', (message) => {
       console.log(message);
@@ -166,7 +178,72 @@ export class SmartHomeApp {
     }
     return;
   }
-  openTutorial() {
-    //this.nav.setRoot(TutorialPage);
+
+//https://devdactic.com/ionic-push-notifications-guide/
+  private registerToken(){
+     this.push.register().then((t: PushToken) => {
+       return this.push.saveToken(t,{
+         ignore_user: true
+       });
+      //return this.push.saveToken(t);
+     }).then((t: PushToken) =>  this.getNotifications() );
+   }
+
+   private getNotifications(){
+     this.push.rx.notification()
+     .subscribe((msg) => {
+       alert(msg.title + ': ' + msg.text);
+     });
+   }
+
+
+
+  deregisterToken(){
+    this.push.unregister();
+
+    //this.push.rx.notification().
   }
+
+
+
+
+
+  // openTutorial() {
+  //   //this.nav.setRoot(TutorialPage);
+  // }
+
+  // deregisterPush1(){
+  //   this.push.register().then((t: PushToken) => {
+  //     return this.push.saveToken(t);
+  //   }).then((t: PushToken) => {
+  //     console.log('Token saved:', t.token);
+  //   });
+  // }
+  //
+  //
+  // registerPush1() {
+  //     // Check that we are on a device
+  //   if (this.platform.is('cordova')) {
+  //       // Register push notifications with the push plugin
+  //     this.push.register()
+  //     .then((t: PushToken) => {
+  //       console.log('Generated Token' + JSON.stringify(t));
+  //       // Save the user with Ionic's user auth service
+  //       return this.push.saveToken(t);
+  //     })
+  //     .then( (t: PushToken) => {
+  //       console.log('Token Saved', t);
+  //       this.listenForPush();
+  //     }).catch( (err) => {
+  //       console.log('Error Saving Token: ' , err);
+  //     });
+  //    }
+  // }
+  //
+  // listenForPush() {
+  //   this.push.rx.notification().subscribe((msg) => {
+  //     alert(msg.title + ': ' + msg.text);
+  //   });
+  // }
+
 }

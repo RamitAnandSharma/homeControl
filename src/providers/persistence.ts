@@ -1,11 +1,10 @@
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class Persistence {
 
-  constructor(private http: Http, private storage: Storage) {
+  constructor(private storage: Storage) {
     //this.db = new Storage(SqlStorage, {name: 'dbName'});
   }
 

@@ -1,5 +1,5 @@
-import {Events} from 'ionic-angular';
-import {Component} from '@angular/core'; 
+
+import {Component} from '@angular/core';
 import {MqttConfig} from '../../providers/mqttconfig';
 
 @Component({
@@ -13,7 +13,7 @@ export class RightnowPage {
   private AQ:string;
 
   private devices: Array<{device: string, state: string, icon:string}>;
-  constructor(private mqttconfig: MqttConfig, private events: Events) {
+  constructor(private mqttconfig: MqttConfig) {
 
   this.devices = [
     { device: 'Blinds', state: '2', icon: 'md-contract' },

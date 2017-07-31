@@ -4,6 +4,9 @@ import { Http, Headers } from '@angular/http';
 import { Events } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { Persistence } from './persistence';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class Authentication {
@@ -32,6 +35,19 @@ export class Authentication {
             reject(error)
             return
           }
+            // firebase.auth().signInWithEmailAndPassword(username, password).then(( data) =>{
+            //   this.events.publish('user:login');
+            //   this.persistence.put(this.HAS_LOGGED_IN, true);
+            //   this.persistence.put('username', username);
+            //   this.username = username;
+            //   resolve(data);
+            // }).catch(()=>{
+            //   var err =  { message : "Invalid Username And Password"};
+            //   reject(err);
+            // })
+
+
+
         //var creds = "username=" + username + "&password=" + password;
           // let options = new RequestOptions({
           //     headers: this.contentHeader

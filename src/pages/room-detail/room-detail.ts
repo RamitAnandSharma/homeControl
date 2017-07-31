@@ -1,10 +1,9 @@
-import {NavController, NavParams, Events,ToastController} from 'ionic-angular';
+import {NavController, NavParams, ToastController} from 'ionic-angular';
 import {Component} from '@angular/core';
 import {DataService} from '../../providers/dataservice';
 import {MqttConfig} from '../../providers/mqttconfig';
 import {DimmerPage} from '../dimmer/dimmer';
 
-import {Device} from '../../entity/interface';
 
 @Component({
   templateUrl: 'room-detail.html'
@@ -22,7 +21,7 @@ export class RoomDetailPage {
   private excludeTracks:any;
   private deviceList=[];
   constructor( private nav:NavController, private dataservice: DataService, private navParams:NavParams,
-     private mqttconfig: MqttConfig, private events: Events, private toastController:ToastController) {
+     private mqttconfig: MqttConfig, private toastController:ToastController) {
      this.sessionparam = navParams.data;
      this.segment = "devices";
      this.getDeviceList();
@@ -31,7 +30,7 @@ export class RoomDetailPage {
     roomid:string;
     getDeviceList() {
       this.roomid = this.navParams.get("roomid");
-      console.log(this.roomid);
+      //console.log(this.roomid);
       this.dataservice.getRoomDevices("").subscribe(
         data => {
           this.deviceList.push(data);

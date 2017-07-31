@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular'; 
+import {NavController} from 'ionic-angular';
 import {DataService} from '../../providers/dataservice';
 
 @Component({
@@ -52,16 +52,16 @@ export class RoutineDetailPage {
 
   roomSelect(rooms) {
     this.selectedList=[];
-     for(var index= 0; index < rooms.length; index++){
-        if( this.containsObject(rooms[index], this.roomList)){
-         this.selectedList = [...this.selectedList, rooms[index]];
-       }else{
-         this.selectedList = this.selectedList.filter(function(elem){
-           return elem != rooms[index];
-         })
-       }
-     }
-   }
+    for(var index= 0; index < rooms.length; index++){
+      if( this.containsObject(rooms[index], this.roomList)){
+        this.selectedList = [...this.selectedList, rooms[index]];
+      }else{
+        this.selectedList = this.selectedList.filter(function(elem){
+          return elem != rooms[index];
+        })
+      }
+    }
+  }
 
 
 }

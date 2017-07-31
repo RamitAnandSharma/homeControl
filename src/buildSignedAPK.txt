@@ -1,0 +1,11 @@
+
+#Build keystore
+keytool -genkey -v -keystore C:\DATA\Workspace\SocialGame\socialgame.keystore -alias socialgame -keyalg RSA -keysize 2048 -validity 10000
+
+#Place inside platforms\android
+#Build with Signing
+ionic build android --release -- --keystore="C:\<Project location>\platforms\android\socialgame.keystore" --storePassword=Bears4-06 --alias=socialgame --password=Bears4-06
+
+
+#center ID
+cordova plugin add phonegap-plugin-push --variable SENDER_ID=12341234 --save
